@@ -6,9 +6,9 @@ function db(): PDO {
     if ($pdo instanceof PDO) return $pdo;
 
     $host = env('DB_HOST', 'localhost');
-    $name = env('DB_NAME', 'ebeneza_foundation');
-    $user = env('DB_USER', 'root');
-    $pass = env('DB_PASSWORD', '');
+    $name = env('DB_NAME', 'foodyco_ebeneza_foundation');
+    $user = env('DB_USER', 'foodyco_ebeneza');
+    $pass = env('DB_PASSWORD', 'Ry1|-}8i06&N');
     $charset = 'utf8mb4';
 
     $dsn = "mysql:host={$host};dbname={$name};charset={$charset}";
