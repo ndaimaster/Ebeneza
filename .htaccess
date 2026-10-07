@@ -1,0 +1,14 @@
+# --- Deny access to sensitive files and folders ---
+<FilesMatch "(^\.env|\.env\..*|\.gitignore|\.gitattributes|\.md$|\.log$|\.sql$|\.sh$|\.yml$|\.yaml$|composer\.(json|lock)$|package(-lock)?\.json$)">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Block sensitive paths even if direct file requests slip through
+    RewriteRule ^(\.env.*|config|includes|services|payments|database|legacy|node_modules|scripts)(/.*)?$ - [F,L]
+    RewriteRule ^(__dbg\.php)$ - [F,L]
+</IfModule>
+
+# Defense in depth: also block via aliases of directories that exist
+RedirectMatch 403 ^/Ebeneza/(config|includes|services|payments|database|legacy)(/.*)?$

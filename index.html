@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ebeneza Foundation | Tanzania</title>
+    <meta name="description" content="Ebeneza Foundation is a registered NGO (01NGO/R/9396) supporting vulnerable children, street children and orphans in Tanzania through protection, education, vocational training and family reintegration.">
+    <meta property="og:title" content="Ebeneza Foundation | Tanzania">
+    <meta property="og:description" content="Supporting vulnerable children and communities in Arusha, Tanzania.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/images/logo.jpeg">
+    <link rel="canonical" href="http://localhost/Ebeneza/">
+    <meta property="og:url" content="http://localhost/Ebeneza/">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
+        :root { --color-primary: #0F5B66; --color-secondary: #F4B942; }
+        .bg-primary { background-color: var(--color-primary); }
+        .text-primary { color: var(--color-primary); }
+        .border-primary { border-color: var(--color-primary); }
+        .bg-secondary { background-color: var(--color-secondary); }
+        .text-secondary { color: var(--color-secondary); }
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+        .reveal-visible { opacity: 1; transform: translateY(0); }
+        .hero-image-frame { transform: rotate(-2deg); transition: transform .4s ease; will-change: transform; }
+        @media (hover:hover) { .hero-image-frame:hover { transform: rotate(-4deg) scale(1.03); } }
+    </style>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Organization","name":"Ebeneza Foundation","address":{"@type":"PostalAddress","streetAddress":"P.O. Box 12597","addressLocality":"Arusha","addressCountry":"TZ"},"email":"ebenezafoundation2025@gmail.com","telephone":"+255753411688"}
+    </script>
+</head>
+<body class="bg-slate-50 text-gray-800 antialiased">
+
+<div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+    <a href="https://wa.me/255753411688" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="bg-green-500 text-white p-4 rounded-full shadow-lg w-14 h-14 flex items-center justify-center text-xl"><i class="fab fa-whatsapp"></i></a>
+    <a href="#donate" aria-label="Donate now" class="bg-secondary text-gray-900 p-4 rounded-full shadow-lg w-14 h-14 flex items-center justify-center text-xl"><i class="fa-solid fa-heart text-red-600"></i></a>
+</div>
+
+<nav id="siteNav" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 bg-primary/95 backdrop-blur-md py-4 px-4 sm:px-8 border-b border-white/10">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <a href="#" class="flex items-center gap-3">
+            <img src="assets/images/logo.jpeg" alt="Ebeneza Foundation logo" class="h-12 w-12 rounded-full object-cover shadow-md">
+            <span class="text-lg sm:text-xl font-extrabold tracking-tight leading-tight text-white">Ebeneza Foundation</span>
+        </a>
+        <div class="hidden lg:flex items-center gap-7 font-medium">
+            <a data-navlink href="#" class="text-white hover:text-secondary">Home</a>
+            <a data-navlink href="#about" class="text-white hover:text-secondary">About Us</a>
+            <a data-navlink href="#mission" class="text-white hover:text-secondary">Vision &amp; Mission</a>
+            <a data-navlink href="#services" class="text-white hover:text-secondary">Our Services</a>
+            <a data-navlink href="#impact" class="text-white hover:text-secondary">Our Impact</a>
+            <a data-navlink href="#donate" class="text-white hover:text-secondary">How to Donate</a>
+            <a data-navlink href="#contact" class="text-white hover:text-secondary">Contact</a>
+        </div>
+        <a href="#donate" class="hidden lg:inline-block bg-secondary hover:bg-yellow-500 text-gray-900 px-6 py-2.5 rounded-full font-semibold">Donate Now</a>
+        <a href="admin/" title="Admin Panel" aria-label="Admin Panel" class="text-white hover:text-secondary transition-transform duration-200 hover:rotate-12"><i class="fa-solid fa-gear text-xl"></i></a>
+        <button id="mobileMenuBtn" class="lg:hidden text-2xl text-white" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+    <div id="mobileMenu" class="hidden lg:hidden absolute top-full left-0 right-0 bg-white shadow-xl border-t border-gray-100 flex-col p-6 gap-4 font-semibold text-gray-800">
+        <button id="mobileMenuClose" class="absolute top-5 right-5 text-gray-700 text-3xl focus:outline-none focus:ring-2 focus:ring-secondary rounded-full p-2" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+        <a href="#" class="block py-2 hover:text-primary transition-colors">Home</a>
+        <a href="#about" class="block py-2 hover:text-primary transition-colors">About Us</a>
+        <a href="#mission" class="block py-2 hover:text-primary transition-colors">Vision &amp; Mission</a>
+        <a href="#services" class="block py-2 hover:text-primary transition-colors">Our Services</a>
+        <a href="#impact" class="block py-2 hover:text-primary transition-colors">Our Impact</a>
+        <a href="#donate" class="block py-2 hover:text-primary transition-colors">How to Donate</a>
+        <a href="#contact" class="block py-2 hover:text-primary transition-colors">Contact</a>
+    </div>
+</nav>
+
+<section class="relative bg-primary min-h-[90vh] flex items-center pt-24 pb-16 overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.10),transparent_35%),linear-gradient(115deg,#0F5B66_0%,#0C4A54_55%,#09363D_100%)]"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 grid lg:grid-cols-2 gap-12 relative z-10 w-full items-center">
+        <div class="text-white space-y-7 pt-6 lg:pt-0">
+            <span class="text-secondary font-bold tracking-[0.25em] uppercase text-xs border-b-2 border-secondary pb-1 inline-block">Together, We Can</span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.04] tracking-tight">
+                <span class="block text-white">BUILD HOPE.</span>
+                <span class="block text-secondary">CHANGE LIVES.</span>
+            </h1>
+            <p class="text-base sm:text-lg text-slate-200 max-w-xl leading-relaxed">The lives of vulnerable children matter. Ebeneza Foundation is a Non-Government Organization dedicated to supporting vulnerable children, especially street children and orphans across Tanzania.</p>
+            <div class="flex flex-wrap gap-4 pt-2">
+                <a href="#donate" class="bg-secondary hover:bg-yellow-500 text-gray-900 px-8 py-4 rounded-full font-bold inline-flex items-center gap-2">Support Our Mission <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="#about" class="border-2 border-white hover:bg-white hover:text-primary text-white px-8 py-4 rounded-full font-bold">Learn More</a>
+            </div>
+        </div>
+        <div class="relative mt-4 lg:mt-0 flex justify-center lg:justify-end">
+            <div class="relative w-full max-w-[560px] rounded-[2rem] border-4 border-white shadow-2xl hero-image-frame overflow-hidden">
+                <img src="assets/images/home.jpg" alt="Ebeneza Foundation community outreach children" class="w-full h-[380px] sm:h-[460px] lg:h-[560px] object-cover">
+            </div>
+            <div class="absolute left-2 sm:left-4 bottom-3 sm:bottom-6 bg-white text-gray-900 rounded-2xl shadow-xl px-5 py-4 flex items-center gap-4">
+                <span class="text-secondary text-xl"><i class="fa-solid fa-star"></i></span>
+                <div><p class="font-extrabold text-sm">Arusha, TZ</p><p class="text-xs text-gray-500">Pure Local Impact</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="py-20 bg-[#E8F5F7] px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="max-w-3xl space-y-6">
+            <span class="text-secondary font-bold text-sm tracking-wider uppercase block">About Us</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">Every child deserves a chance to shine</h2>
+            <p class="text-gray-600 leading-relaxed text-lg">Ebeneza Foundation works with vulnerable children, street children and orphans in Tanzania. Our programs focus on safe reintegration with families, access to education, vocational skills, psychosocial support and the distribution of food and essential items.</p>
+            <div class="inline-flex bg-primary text-white p-4 rounded-xl items-center gap-4">
+                <div class="bg-white/10 p-2.5 rounded-lg text-secondary text-xl"><i class="fa-solid fa-shield-halved"></i></div>
+                <div><p class="text-xs uppercase tracking-wider text-slate-300 font-semibold">Registered NGO</p><h4 class="font-bold">01NGO/R/9396</h4></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="mission" class="py-20 bg-primary px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+            <h2 class="text-3xl sm:text-4xl font-black text-white uppercase">Our Vision &amp; Mission</h2>
+            <div class="w-24 h-1.5 bg-secondary mx-auto rounded-full"></div>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-8">
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-8 space-y-4">
+                <h3 class="text-2xl font-extrabold text-white"><i class="fa-solid fa-eye text-secondary mr-2"></i>Our Vision</h3>
+                <p class="text-slate-200 text-lg leading-relaxed">A community where every vulnerable child is safe, supported and able to build a hopeful future.</p>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-8 space-y-4">
+                <h3 class="text-2xl font-extrabold text-white"><i class="fa-solid fa-compass text-secondary mr-2"></i>Our Mission</h3>
+                <p class="text-slate-200 text-lg leading-relaxed">To walk alongside street children, orphans and vulnerable families in Tanzania — through counseling, family tracing and reintegration, education support, vocational training, life skills and the provision of food and basic material assistance.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="services" class="py-20 bg-slate-100 px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+            <h2 class="text-3xl sm:text-4xl font-black text-primary uppercase">Our Services</h2>
+            <div class="w-24 h-1.5 bg-secondary mx-auto rounded-full"></div>
+            <p class="text-gray-600">Practical programs designed to protect, educate and empower vulnerable children and their families.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="relative rounded-3xl overflow-hidden shadow-xl min-h-[360px] group">
+                <img src="assets/images/img1.jpg" alt="Child protection and family reintegration support" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#1D4ED8]/95 via-[#1D4ED8]/50 to-transparent"></div>
+                <div class="relative z-10 p-6 h-full flex flex-col justify-end text-white">
+                    <div class="w-12 h-12 rounded-full bg-[#2563EB] flex items-center justify-center mb-4"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3 class="text-xl font-extrabold leading-tight mb-2">Child Protection &amp; Family Reintegration</h3>
+                    <p class="text-sm text-slate-200 mb-4">Safely tracing families and transporting displaced children back to stable, protective homes, with follow-up support.</p>
+                    <button type="button" data-service="Child Protection &amp; Family Reintegration" class="inline-flex items-center gap-2 bg-[#2563EB] hover:bg-[#1D4ED8] rounded-full px-4 py-2 text-sm font-bold w-fit transition">Learn More <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+            <div class="relative rounded-3xl overflow-hidden shadow-xl min-h-[360px] group">
+                <img src="assets/images/img3.jpg" alt="Education support for vulnerable children" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#047857]/95 via-[#047857]/50 to-transparent"></div>
+                <div class="relative z-10 p-6 h-full flex flex-col justify-end text-white">
+                    <div class="w-12 h-12 rounded-full bg-[#059669] flex items-center justify-center mb-4"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h3 class="text-xl font-extrabold leading-tight mb-2">Education Support</h3>
+                    <p class="text-sm text-slate-200 mb-4">Helping vulnerable children access and stay in school through fees, materials and mentoring support.</p>
+                    <button type="button" data-service="Education Support" class="inline-flex items-center gap-2 bg-[#059669] hover:bg-[#047857] rounded-full px-4 py-2 text-sm font-bold w-fit transition">Learn More <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+            <div class="relative rounded-3xl overflow-hidden shadow-xl min-h-[360px] group">
+                <img src="assets/images/image2.jpg" alt="Vocational skills development workshop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#6D28D9]/95 via-[#6D28D9]/50 to-transparent"></div>
+                <div class="relative z-10 p-6 h-full flex flex-col justify-end text-white">
+                    <div class="w-12 h-12 rounded-full bg-[#7C3AED] flex items-center justify-center mb-4"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                    <h3 class="text-xl font-extrabold leading-tight mb-2">Vocational Skills Development</h3>
+                    <p class="text-sm text-slate-200 mb-4">Practical skills and readiness programs that give older beneficiaries a path to earning a living.</p>
+                    <button type="button" data-service="Vocational Skills Development" class="inline-flex items-center gap-2 bg-[#7C3AED] hover:bg-[#6D28D9] rounded-full px-4 py-2 text-sm font-bold w-fit transition">Learn More <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+            <div class="relative rounded-3xl overflow-hidden shadow-xl min-h-[360px] group">
+                <img src="assets/images/img4.jpg" alt="Food and clothing assistance distribution" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#B45309]/95 via-[#B45309]/50 to-transparent"></div>
+                <div class="relative z-10 p-6 h-full flex flex-col justify-end text-white">
+                    <div class="w-12 h-12 rounded-full bg-[#D97706] flex items-center justify-center mb-4"><i class="fa-solid fa-bowl-food"></i></div>
+                    <h3 class="text-xl font-extrabold leading-tight mb-2">Food &amp; Clothing Assistance</h3>
+                    <p class="text-sm text-slate-200 mb-4">Regular distribution of meals, clothing and basic supplies to children and families in need.</p>
+                    <button type="button" data-service="Food &amp; Clothing Assistance" class="inline-flex items-center gap-2 bg-[#D97706] hover:bg-[#B45309] rounded-full px-4 py-2 text-sm font-bold w-fit transition">Learn More <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="serviceModal" class="hidden fixed inset-0 z-[80] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 relative">
+        <button id="serviceModalClose" class="absolute top-4 right-4 text-gray-500 hover:text-primary text-2xl" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        <h3 id="serviceModalTitle" class="text-2xl font-black text-primary mb-3"></h3>
+        <p id="serviceModalBody" class="text-gray-600 leading-relaxed"></p>
+    </div>
+</div>
+
+<script>
+(function() {
+    const serviceSummaries = {
+        'Child Protection & Family Reintegration': 'We identify vulnerable children, trace their families and community guardians, safely transport them home, and follow up with basic support so they can stay safe and stable.',
+        'Education Support': 'We assess each child\'s needs, help cover school fees and materials, support parents and guardians, and encourage consistent attendance so children can learn and stay in school.',
+        'Vocational Skills Development': 'We prepare young people and older beneficiaries with practical skills, tools and workplace habits, provide mentorship, and help connect them to earning opportunities.',
+        'Food & Clothing Assistance': 'We collect or receive essential items, verify vulnerable households, distribute food/clothing fairly, and track support needs so help is delivered to the right beneficiaries.'
+    };
+    const modal = document.getElementById('serviceModal');
+    const title = document.getElementById('serviceModalTitle');
+    const body = document.getElementById('serviceModalBody');
+    const close = document.getElementById('serviceModalClose');
+    document.querySelectorAll('[data-service]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const key = btn.getAttribute('data-service');
+            // Decode HTML entities like &amp;
+            const div = document.createElement('div');
+            div.innerHTML = key;
+            title.textContent = div.textContent;
+            body.textContent = serviceSummaries[div.textContent] || '';
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        });
+    });
+    const hide = () => { modal.classList.add('hidden'); modal.classList.remove('flex'); };
+    close && close.addEventListener('click', hide);
+    modal && modal.addEventListener('click', (e) => { if (e.target === modal) hide(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hide(); });
+})();
+</script>
+
+<section id="impact" class="py-20 bg-[#E8F5F7] px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+        <h2 class="text-3xl sm:text-4xl font-black text-primary uppercase">Our Impact</h2>
+        <div class="w-24 h-1.5 bg-secondary mx-auto rounded-full"></div>
+        <p class="text-gray-600">Published figures are linked to verified organizational reports.</p>
+    </div>
+    <div id="impactGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-4 bg-primary p-8 sm:p-12 rounded-[2rem] text-white">
+        <p class="col-span-full text-slate-300">Loading verified impact figures...</p>
+    </div>
+    </div>
+</section>
+
+<section id="trust" class="py-20 bg-[#DCEEF0] border-t border-gray-100 px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+            <h2 class="text-3xl sm:text-4xl font-black text-primary uppercase">Trust &amp; Transparency</h2>
+            <div class="w-24 h-1.5 bg-secondary mx-auto rounded-full"></div>
+            <p class="text-gray-600">Ebeneza Foundation publishes its registration and accountability documents for donors and partners to review.</p>
+        </div>
+        <div class="grid lg:grid-cols-3 gap-6">
+            <div class="bg-white rounded-2xl shadow p-6 space-y-2">
+                <h3 class="font-bold text-lg">NGO Registration</h3>
+                <p class="text-gray-600 text-sm">Registration number: <strong>01NGO/R/9396</strong></p>
+                <p class="text-gray-400 text-xs">Registration certificate published once verified and uploaded by the NGO.</p>
+            </div>
+            <div class="bg-white rounded-2xl shadow p-6 space-y-2">
+                <h3 class="font-bold text-lg">Annual &amp; Financial Reports</h3>
+                <div id="documentsList" class="text-sm text-gray-600">Loading published documents...</div>
+            </div>
+            <div class="bg-white rounded-2xl shadow p-6 space-y-2">
+                <h3 class="font-bold text-lg">Accountability Documents</h3>
+                <p class="text-gray-600 text-sm">Safeguarding policy, governance and project reports will be published here as they are verified by the organization.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="gallerySection" class="py-20 bg-[#E8F5F7] px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+            <h2 class="text-3xl sm:text-4xl font-black text-primary uppercase">Impact in Action</h2>
+            <div class="w-24 h-1.5 bg-secondary mx-auto rounded-full"></div>
+            <p class="text-gray-600">Photographs from Ebeneza Foundation activities, published with appropriate consent.</p>
+        </div>
+        <div id="galleryGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <p class="text-gray-400 col-span-full text-center">Activity gallery will appear here once photographs are uploaded.</p>
+        </div>
+    </div>
+</section>
+
+<section id="partnersSection" class="py-20 bg-[#DCEEF0] px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl font-black text-primary uppercase text-center mb-12">Our Partners</h2>
+        <div id="partnersGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <p class="text-gray-400 col-span-full text-center">Our partners will be listed here.</p>
+        </div>
+    </div>
+</section>
+
+<section id="testimonialsSection" class="py-20 bg-[#E8F5F7] px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl font-black text-primary uppercase text-center mb-12">Stories of Change</h2>
+    <div id="testimonialsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <p class="text-gray-400 col-span-full text-center">Stories and case studies will appear here.</p>
+    </div>
+    </div>
+</section>
+
+<section id="donate" class="py-20 bg-slate-50 border-t border-gray-100 px-4 sm:px-8">
+    <div class="max-w-3xl mx-auto">
+        <div class="text-center space-y-3 mb-10">
+            <span class="text-secondary font-bold tracking-widest uppercase text-sm">Make a Donation</span>
+            <h2 class="text-3xl sm:text-4xl font-black text-primary uppercase">Support the Mission</h2>
+            <p class="text-gray-600">Choose where your donation should be directed, then follow the payment instructions below.</p>
+        </div>
+
+        <div id="donationStep1">
+            <form id="donationForm" class="bg-white rounded-2xl shadow-md border border-gray-100 p-8 space-y-5" novalidate>
+                <div><label class="text-sm font-semibold">Full Name</label><input name="name" type="text" required class="w-full border rounded-xl px-4 py-3" placeholder="Your full name"></div>
+                <div><label class="text-sm font-semibold">Email</label><input name="email" type="email" required class="w-full border rounded-xl px-4 py-3" placeholder="you@example.com"></div>
+                <div><label class="text-sm font-semibold">Phone Number <span class="text-gray-400 font-normal">(optional)</span></label><input name="phone" type="tel" class="w-full border rounded-xl px-4 py-3" placeholder="+255..."></div>
+                <div><label class="text-sm font-semibold">Amount (TZS)</label><input name="amount" type="number" min="1000" required class="w-full border rounded-xl px-4 py-3" placeholder="e.g. 20000"><p class="text-xs text-gray-400 mt-1">A donation of TZS 20,000 can support food and essential supplies. Distribution is at the organization's discretion.</p></div>
+                <label class="flex items-center gap-2 text-sm"><input type="checkbox" required> I confirm the information provided is correct and I consent to being contacted about my donation.</label>
+                <p id="donationError" class="hidden text-red-600 text-sm font-medium"></p>
+                <button class="w-full bg-secondary hover:bg-yellow-500 text-gray-900 py-3.5 rounded-xl font-bold">Submit Donation</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<footer id="contact" class="bg-primary text-slate-100 py-16 px-4 sm:px-8">
+    <div class="max-w-5xl mx-auto">
+        <div class="text-center space-y-8">
+            <img src="assets/images/logo.jpeg" alt="Ebeneza Foundation logo" class="h-20 w-20 rounded-full mx-auto border-2 border-white/30 shadow-[0_0_30px_rgba(244,185,66,0.25)]">
+            <div class="grid sm:grid-cols-3 gap-4 text-sm">
+                <div class="bg-white/5 border border-white/10 rounded-2xl px-4 py-4 hover:bg-white/10 transition-colors">
+                    <i class="fa-solid fa-location-dot text-secondary text-xl mb-2"></i>
+                    <p class="text-slate-100">P.O. Box 12597, Arusha, Tanzania</p>
+                </div>
+                <a href="mailto:ebenezafoundation2025@gmail.com" class="bg-white/5 border border-white/10 rounded-2xl px-4 py-4 hover:bg-white/10 transition-colors inline-block">
+                    <i class="fa-solid fa-envelope text-secondary text-xl mb-2"></i>
+                    <p class="text-slate-100">ebenezafoundation2025@gmail.com</p>
+                </a>
+                <a href="tel:+255753411688" class="bg-white/5 border border-white/10 rounded-2xl px-4 py-4 hover:bg-white/10 transition-colors inline-block">
+                    <i class="fa-brands fa-whatsapp text-secondary text-xl mb-2"></i>
+                    <p class="text-slate-100">+255 753 411 688</p>
+                </a>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4" id="socialLinks"></div>
+        </div>
+
+        <div class="mt-12 border-t border-white/15 pt-6">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-center md:text-left">
+                <p class="text-xs text-slate-300">&copy; 2026 Ebeneza Foundation. All rights reserved. Registered NGO: 01NGO/R/9396</p>
+                <nav class="flex flex-wrap justify-center md:justify-end gap-x-5 gap-y-2 text-xs text-slate-200" aria-label="Footer links">
+                    <a href="privacy.html" class="hover:text-white hover:underline transition-colors">Privacy</a>
+                    <a href="safeguarding.html" class="hover:text-white hover:underline transition-colors">Safeguarding</a>
+                    <a href="contact.html" class="hover:text-white hover:underline transition-colors">Contact</a>
+                    <a href="track.html" class="inline-flex items-center gap-1 rounded-full bg-white/10 border border-white/20 px-3 py-1 text-slate-100 hover:bg-white/20 hover:text-white transition-colors" aria-label="Track Donation"><i class="fa-solid fa-magnifying-glass mr-1 transition-transform duration-300 hover:rotate-12"></i>Track Donation</a>
+                    <a href="admin/" class="inline-flex items-center gap-1 rounded-full bg-white/10 border border-white/20 px-3 py-1 text-slate-100 hover:bg-white/20 hover:text-white transition-colors" aria-label="Admin Panel"><i class="fa-solid fa-gear mr-1 transition-transform duration-300 hover:rotate-90"></i>Admin Panel</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="js/app.js?v=202610051"></script>
+<script src="js/validation.js"></script>
+<script src="js/donation.js"></script>
+<script>
+// Load dynamic content
+document.addEventListener('DOMContentLoaded', async () => {
+    const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+    // Impact + documents
+    const impactRes = await fetch('api/impact.php').then(r => r.json()).catch(() => ({impact: []}));
+    const grid = document.getElementById('impactGrid');
+    if (impactRes.impact && impactRes.impact.length) {
+        grid.innerHTML = impactRes.impact.map(i => `
+            <div class="p-4 text-center">
+                <h3 class="text-3xl font-extrabold text-secondary">${esc(i.value)}</h3>
+                <p class="text-sm font-semibold text-slate-200">${esc(i.metric_name)} (${esc(i.year)})</p>
+                <p class="text-xs text-slate-400">${i.source_title ? 'Source: ' + esc(i.source_title) : 'Source: pending verification'}</p>
+            </div>`).join('');
+    } else {
+        grid.innerHTML = '<p class="col-span-full text-slate-300">Verified impact figures will be published once confirmed by Ebeneza Foundation.</p>';
+    }
+
+    const docs = await fetch('api/documents.php').then(r => r.json()).catch(() => ({documents: []}));
+    const dl = document.getElementById('documentsList');
+    dl.innerHTML = (docs.documents && docs.documents.length)
+        ? docs.documents.map(d => `<p class="border-b py-1"><a class="text-primary underline" href="${esc(d.file_path)}" target="_blank">${esc(d.title)}</a> <span class="text-gray-400">(${esc(d.document_type)}${d.year ? ', ' + esc(d.year) : ''})</span></p>`).join('')
+        : '<p class="text-gray-400">No public documents yet.</p>';
+
+    const gal = await fetch('api/gallery.php').then(r => r.json()).catch(() => ({gallery: []}));
+    const gg = document.getElementById('galleryGrid');
+    gg.innerHTML = (gal.gallery && gal.gallery.length)
+        ? gal.gallery.map(g => `
+            <figure class="bg-white rounded-2xl shadow p-3">
+                <img src="${esc(g.image_path)}" alt="${esc(g.title)}" class="rounded-xl w-full h-48 object-cover" loading="lazy">
+                <figcaption class="mt-2 text-sm font-semibold">${esc(g.title)}</figcaption>
+                <p class="text-gray-400 text-xs">${esc(g.category || '')}${g.activity_date ? ' · ' + esc(g.activity_date) : ''}</p>
+            </figure>`).join('')
+        : '<p class="text-gray-400 col-span-full text-center">Activity gallery will appear here once photographs are uploaded.</p>';
+
+    const parts = await fetch('api/partners.php').then(r => r.json()).catch(() => ({partners: []}));
+    const pg = document.getElementById('partnersGrid');
+    if (pg) {
+        pg.innerHTML = (parts.partners && parts.partners.length)
+            ? parts.partners.map(p => `
+                <div class="bg-white rounded-2xl shadow p-6 text-center">
+                    ${p.logo_path ? `<img src="${esc(p.logo_path)}" alt="${esc(p.name)} logo" class="h-16 mx-auto object-contain">` : ''}
+                    <h3 class="font-bold mt-2">${esc(p.name)}</h3>
+                    <p class="text-gray-500 text-sm">${esc(p.description || '')}</p>
+                    ${p.website_url ? `<a class="text-primary underline text-sm" href="${esc(p.website_url)}" target="_blank" rel="noopener">Website</a>` : ''}
+                </div>`).join('')
+            : '<p class="text-gray-400 col-span-full text-center">Our partners will be listed here.</p>';
+    }
+
+    const tm = await fetch('api/testimonials.php').then(r => r.json()).catch(() => ({testimonials: []}));
+    const tg = document.getElementById('testimonialsGrid');
+    if (tg) {
+        tg.innerHTML = (tm.testimonials && tm.testimonials.length)
+            ? tm.testimonials.map(t => `
+                <div class="bg-white rounded-2xl shadow p-6 space-y-2">
+                    ${t.image_path ? `<img src="${esc(t.image_path)}" alt="${esc(t.title)}" class="rounded-xl w-full h-40 object-cover" loading="lazy">` : ''}
+                    <h3 class="font-bold">${esc(t.title)}</h3>
+                    <p class="text-primary text-sm">${esc(t.beneficiary_label || '')}${t.location ? ' · ' + esc(t.location) : ''}</p>
+                    <p class="text-gray-600 text-sm">${esc(t.outcome || t.situation || '')}</p>
+                </div>`).join('')
+            : '<p class="text-gray-400 col-span-full text-center">Stories and case studies will appear here.</p>';
+    }
+
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Your Donation | Ebeneza Foundation</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>body{font-family:'Inter',sans-serif}h1,h2,h3{font-family:'Poppins',sans-serif}:root{--color-primary:#0F5B66;--color-secondary:#F4B942}.bg-primary{background-color:var(--color-primary)}.text-primary{color:var(--color-primary)}.bg-secondary{background-color:var(--color-secondary)}@media print{.no-print{display:none}}</style>
+</head>
+<body class="bg-slate-50 text-gray-800 min-h-screen px-4 py-10">
+<div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-md border border-gray-100 p-10 space-y-6">
+    <div class="text-center space-y-2">
+        <div class="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center text-3xl text-green-600 mx-auto"><i class="fa-solid fa-heart"></i></div>
+        <h1 class="text-3xl font-black text-primary">Thank You for Your Donation</h1>
+        <p class="text-gray-600">Your donation request has been registered.</p>
+    </div>
+
+    <div id="details" class="bg-slate-50 rounded-xl p-5 text-sm space-y-1">
+        <p><strong>Reference:</strong> <span id="ref" class="text-primary font-bold"></span></p>
+        <p><strong>Amount:</strong> <span id="amount"></span></p>
+        <p><strong>Payment Method:</strong> Mobile Money</p>
+        <p><strong>Payment Number:</strong> <span id="lipa"></span></p>
+        <p><strong>Status:</strong> <span id="status" class="font-semibold">pending</span></p>
+    </div>
+
+    <div class="space-y-2">
+        <h2 class="text-xl font-bold text-primary">How to complete your payment</h2>
+        <ol class="list-decimal ml-5 text-gray-700 space-y-1 text-sm">
+            <li>Open your mobile-money service (e.g. M-Pesa, Tigo Pesa, Airtel Money, HaloPesa).</li>
+            <li>Choose the Lipa Namba / Pay Bill payment option.</li>
+            <li>Enter the Lipa Namba: <strong id="lipa2"></strong></li>
+            <li>Enter the amount shown above.</li>
+            <li>Complete the payment.</li>
+            <li>Keep your transaction message/reference for communication with Ebeneza Foundation.</li>
+        </ol>
+        <p class="text-xs text-gray-400 mt-2">Preferably also keep your donation reference <strong id="ref2"></strong>.</p>
+    </div>
+
+    <div id="bankBox" class="hidden bg-slate-50 rounded-xl p-5 text-sm space-y-1">
+        <h3 class="font-bold text-primary">Bank transfer alternative</h3>
+        <p><strong>Bank:</strong> <span id="bankName"></span></p>
+        <p><strong>Account name:</strong> <span id="bankAccName"></span></p>
+        <p><strong>Account number:</strong> <span id="bankAccNo"></span></p>
+        <p><strong>SWIFT:</strong> <span id="bankSwift"></span></p>
+    </div>
+
+    <p class="text-xs text-gray-400">Keep your donation reference for future communication. Our team will review and confirm your donation manually; it is not confirmed automatically.</p>
+
+    <div class="flex flex-wrap gap-3 no-print">
+        <a id="trackBtn" href="track.html" class="bg-primary text-white px-6 py-3 rounded-full font-bold text-sm">Track Donation</a>
+        <button onclick="window.print()" class="border border-primary text-primary px-6 py-3 rounded-full font-bold text-sm">Print Instructions</button>
+        <a href="index.html" class="text-primary underline font-semibold text-sm self-center">Back to Home</a>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const ref = new URLSearchParams(location.search).get('ref') || '';
+    document.getElementById('ref').textContent = ref;
+    document.getElementById('ref2').textContent = ref;
+    document.getElementById('trackBtn').href = 'track.html' + (ref ? '?ref=' + encodeURIComponent(ref) : '');
+    try {
+        const settings = await fetch('api/settings.php').then(r => r.json());
+        const s = settings.settings || {};
+        document.getElementById('lipa').textContent = s.lipa_namba || '';
+        document.getElementById('lipa2').textContent = s.lipa_namba || '';
+        if (s.bank_account_number) {
+            document.getElementById('bankBox').classList.remove('hidden');
+            document.getElementById('bankName').textContent = s.bank_name || '';
+            document.getElementById('bankAccName').textContent = s.bank_account_name || '';
+            document.getElementById('bankAccNo').textContent = s.bank_account_number;
+            document.getElementById('bankSwift').textContent = s.bank_swift || '';
+        }
+    } catch (e) {}
+    if (ref) {
+        try {
+            const res = await fetch('api/donations/status.php?reference=' + encodeURIComponent(ref)).then(r => r.json());
+            if (res.amount) document.getElementById('amount').textContent = 'TZS ' + Number(res.amount).toLocaleString();
+            if (res.status) document.getElementById('status').textContent = res.status;
+        } catch (e) {}
+    }
+});
+</script>
+</body>
+</html>

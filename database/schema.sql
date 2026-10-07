@@ -1,0 +1,129 @@
+-- Ebeneza Foundation — simplified donation system (MySQL 8+/MariaDB 10.4+)
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+CREATE TABLE IF NOT EXISTS admins (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(150) NOT NULL,
+  email VARCHAR(190) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  last_login_at DATETIME NULL
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS donations (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  reference VARCHAR(32) NOT NULL UNIQUE,
+  name VARCHAR(150) NOT NULL,
+  email VARCHAR(190) NOT NULL,
+  phone VARCHAR(40) NULL,
+  amount DECIMAL(15,2) NOT NULL,
+  status ENUM('pending','under_review','confirmed','rejected') NOT NULL DEFAULT 'pending',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_donations_status (status),
+  INDEX idx_donations_email (email),
+  INDEX idx_donations_name (name),
+  INDEX idx_donations_reference (reference)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS site_settings (
+  setting_key VARCHAR(100) PRIMARY KEY,
+  setting_value TEXT NULL,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS contact_messages (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(150) NOT NULL,
+  email VARCHAR(190) NOT NULL,
+  phone VARCHAR(40) NULL,
+  subject VARCHAR(190) NULL,
+  message TEXT NOT NULL,
+  ip_address VARCHAR(64) NULL,
+  is_read TINYINT(1) NOT NULL DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS documents (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(190) NOT NULL,
+  document_type VARCHAR(80) NOT NULL,
+  description TEXT NULL,
+  file_path VARCHAR(255) NOT NULL,
+  year INT NULL,
+  published TINYINT(1) NOT NULL DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  INDEX idx_documents_type (document_type)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS impact_statistics (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  metric_name VARCHAR(150) NOT NULL,
+  value VARCHAR(60) NOT NULL,
+  unit VARCHAR(40) NULL,
+  year INT NOT NULL,
+  description TEXT NULL,
+  source_title VARCHAR(190) NULL,
+  source_document_id INT UNSIGNED NULL,
+  verified TINYINT(1) NOT NULL DEFAULT 0,
+  published TINYINT(1) NOT NULL DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (source_document_id) REFERENCES documents(id) ON DELETE SET NULL
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS gallery (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(190) NOT NULL,
+  description TEXT NULL,
+  image_path VARCHAR(255) NOT NULL,
+  category VARCHAR(80) NULL,
+  activity_date DATE NULL,
+  photo_consent TINYINT(1) NOT NULL DEFAULT 0,
+  published TINYINT(1) NOT NULL DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS partners (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(150) NOT NULL,
+  logo_path VARCHAR(255) NULL,
+  description TEXT NULL,
+  website_url VARCHAR(255) NULL,
+  published TINYINT(1) NOT NULL DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS testimonials (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(190) NOT NULL,
+  beneficiary_label VARCHAR(150) NULL,
+  location VARCHAR(150) NULL,
+  situation TEXT NULL,
+  intervention TEXT NULL,
+  outcome TEXT NULL,
+  case_date DATE NULL,
+  image_path VARCHAR(255) NULL,
+  photo_consent TINYINT(1) NOT NULL DEFAULT 0,
+  published TINYINT(1) NOT NULL DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS audit_logs (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  admin_id INT UNSIGNED NULL,
+  action VARCHAR(120) NOT NULL,
+  entity_type VARCHAR(80) NULL,
+  entity_id INT UNSIGNED NULL,
+  old_value TEXT NULL,
+  new_value TEXT NULL,
+  ip_address VARCHAR(64) NULL,
+  user_agent VARCHAR(255) NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  INDEX idx_audit_entity (entity_type, entity_id),
+  FOREIGN KEY (admin_id) REFERENCES admins(id) ON DELETE SET NULL
+) ENGINE=InnoDB;
+
+SET FOREIGN_KEY_CHECKS = 1;

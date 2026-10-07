@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Your Donation | Ebeneza Foundation</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>body{font-family:'Inter',sans-serif}:root{--color-primary:#0F5B66;--color-secondary:#F4B942}.text-primary{color:var(--color-primary)}.bg-primary{background-color:var(--color-primary)}</style>
+</head>
+<body class="bg-slate-50 min-h-screen px-4 py-10">
+<div class="max-w-lg mx-auto bg-white rounded-2xl shadow-md border border-gray-100 p-10 space-y-6">
+    <h1 class="text-2xl font-black text-primary text-center">Track Your Donation</h1>
+    <form id="trackForm" class="space-y-3">
+        <input name="reference" required placeholder="EBZ-2026-A8F42C" class="w-full border rounded-xl px-4 py-3">
+        <button class="w-full bg-primary text-white py-3 rounded-xl font-bold">Check Status</button>
+    </form>
+    <div id="result" class="hidden bg-slate-50 rounded-xl p-5 text-sm space-y-1"></div>
+    <p id="error" class="hidden text-red-600 text-sm text-center"></p>
+    <a href="index.html" class="block text-center text-primary underline text-sm">Back to Home</a>
+</div>
+<script>
+const messages = {
+    pending: 'Your donation has been registered and is awaiting confirmation.',
+    under_review: 'Your donation is being reviewed by our team.',
+    confirmed: 'Your donation has been confirmed. Thank you for supporting Ebeneza Foundation.',
+    rejected: 'Your donation could not be confirmed. Please contact Ebeneza Foundation.',
+};
+async function track(ref) {
+    const result = document.getElementById('result');
+    const error = document.getElementById('error');
+    result.classList.add('hidden'); error.classList.add('hidden');
+    let res;
+    try { res = await fetch('api/donations/status.php?reference=' + encodeURIComponent(ref)).then(r => r.json()); }
+    catch (e) { error.textContent = 'Could not check the status. Please try again.'; error.classList.remove('hidden'); return; }
+    if (res.error) { error.textContent = res.error === 'No donation was found for this reference.' || res.error === 'Invalid reference.' ? 'No donation was found for this reference.' : 'Could not check the status.'; error.classList.remove('hidden'); return; }
+    result.innerHTML =
+        '<p><strong>Reference:</strong> ' + res.reference + '</p>' +
+        '<p><strong>Amount:</strong> TZS ' + Number(res.amount).toLocaleString() + '</p>' +
+        '<p><strong>Date:</strong> ' + res.date + '</p>' +
+        '<p><strong>Status:</strong> ' + res.status + '</p>' +
+        '<p class="mt-2 text-gray-600">' + (messages[res.status] || '') + '</p>';
+    result.classList.remove('hidden');
+}
+document.getElementById('trackForm').addEventListener('submit', e => {
+    e.preventDefault();
+    track(new FormData(e.target).get('reference'));
+});
+const q = new URLSearchParams(location.search).get('ref');
+if (q) { document.querySelector('input[name=reference]').value = q; track(q); }
+</script>
+</body>
+</html>
