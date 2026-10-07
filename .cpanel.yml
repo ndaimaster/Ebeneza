@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/foodyco/ /ebeneza.foody.co.tz/
+    - export DEPLOYPATH=/home/foodyco/ebeneza.foody.co.tz/
     - /bin/rsync -a --exclude='.git' --exclude='.env' ./ $DEPLOYPATH
